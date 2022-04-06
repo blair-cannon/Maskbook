@@ -10,12 +10,12 @@ from connection import execute_query
 # for hero in heroes:
 #     print(hero[1])
 
-# create_table = """
-#     create table test (
-#         test1 varchar,
-#         test2 varchar
-#     )
-#     """
+create_table = """
+    create table test (
+        test1 varchar,
+        test2 varchar
+    )
+    """
 
 # execute_query(create_table)
 
@@ -34,3 +34,4 @@ select_heroes = """
 heroes = execute_query(select_heroes)
 for hero in heroes:
     print(hero[1])
+
