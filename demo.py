@@ -1,5 +1,5 @@
 # This is why you'll execute a series of SQL statements during demo day.
-from connection import execute_query
+from connection import select_one, select_all, run_this
 
 # select_heroes = """
 #     SELECT * FROM heroes
@@ -17,7 +17,7 @@ create_table = """
     )
     """
 
-# execute_query(create_table)
+run_this(create_table)
 
 
 # drop_table = """
@@ -26,12 +26,12 @@ create_table = """
 
 # execute_query(drop_table)
 
-select_heroes = """
-    SELECT * FROM heroes
-    ORDER BY id DESC 
-"""
+# select_heroes = """
+#     SELECT * FROM heroes
+#     ORDER BY id DESC 
+# """
 
-heroes = execute_query(select_heroes)
-for hero in heroes:
-    print(hero[1])
+# heroes = execute_query(select_heroes)
+# for hero in heroes:
+#     print(hero[1])
 

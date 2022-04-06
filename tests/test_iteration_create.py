@@ -1,8 +1,7 @@
 import pytest
 from connection import execute_query
-from demo import *
-# from pgAdmin import abilities, ability_types, heroes, relationship_types, relationships
-# from pgAdmin import public_tables 
+from demo import create_table, select_heroes
+
 
 
 def test_trial():
@@ -24,5 +23,7 @@ def test_table():
     assert execute_query(create_table) == True
 
 def test_get_a_hero():
-    assert execute_query(select_heroes).fetchall() == True
+    hero = execute_query(select_heroes).fetchone()
+    assert hero[0][0] == 'Chill Woman'
+
     
