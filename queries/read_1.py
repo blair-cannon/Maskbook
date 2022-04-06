@@ -3,7 +3,7 @@ sys.path.append("/workspace/Maskbook")
 from connection import select_one, select_all, run_this
 
 # all of these are made in relation to the test tables to not disturb the real environment until production
-# read data:
+# READ data:
 
 # GOAL: Select any heroes (if any) that have more disabilities than abilities (can view with angry cat)
 
@@ -40,13 +40,16 @@ for strong_hero in double_abilities:
     for weak_hero in double_weaknesses:
         if weak_hero[0] == strong_hero[0]:
                 if weak_hero[1] > strong_hero[1]:
-                    print(weak_hero[0])
+                    result = weak_hero[0]
                 else: 
                     print('There are no heroes with more weaknesses than abilities.')
         else:
-            print(weak_hero[0])
-
-
-# figure out a way to do step 4 ??
+            result = weak_hero[0]
+            print(result)
 # 4. Convert hero_id to hero_name 
-# Error that weak_hero is undefined when I try to use it to select for hero name 
+            name = """ 
+                SELECT name FROM test_heroes 
+                WHERE id = {}
+            """.format(result)
+            print(run_this(name))
+
