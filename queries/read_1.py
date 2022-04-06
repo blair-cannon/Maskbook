@@ -5,9 +5,9 @@ from connection import select_one, select_all, run_this
 # all of these are made in relation to the test tables to not disturb the real environment until production
 # read data:
 
-# select any heroes (if any) that have more disabilities than abilities (can view with angry cat)
+# GOAL: Select any heroes (if any) that have more disabilities than abilities (can view with angry cat)
 
-# select any heroes that have more than one ability
+# 1. select any heroes that have more than one ability
 find_heros_with_more_than_one_ability = """ 
 SELECT hero_id, COUNT(hero_id)
 FROM test_abilities
@@ -19,7 +19,7 @@ double_abilities = select_all(find_heros_with_more_than_one_ability)
 # second number = count:
 print(double_abilities)
 
-# select any heroes that have more than one weakness
+# 2. select any heroes that have more than one weakness
 find_heros_with_more_than_one_weakness = """ 
 SELECT hero_id, COUNT(hero_id)
 FROM weaknesses
@@ -29,7 +29,7 @@ HAVING COUNT(hero_id)>1
 double_weaknesses = select_all(find_heros_with_more_than_one_weakness)
 print(double_weaknesses) 
 
-# compare hero_id's of the hero's with > 1 ability 
+# 3. compare hero_id's of the hero's with > 1 ability 
 # to the hero's with > 1 weakness
 # if any heroes show up in both lists, compare the counts
 # to see if the hero has more abilities or disabilities
@@ -47,3 +47,6 @@ for strong_hero in double_abilities:
             print(weak_hero[0])
 
 
+# figure out a way to do step 4 ??
+# 4. Convert hero_id to hero_name 
+# Error that weak_hero is undefined when I try to use it to select for hero name 
