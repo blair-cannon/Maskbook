@@ -1,10 +1,13 @@
+import sys
+sys.path.append("/workspace/Maskbook")
 from connection import select_one, select_all, run_this
 
+# all of these are made in relation to the test tables to not disturb the real environment until production
 # create new tables:
 
 
-# A table that defines different weaknesses:
-crete_weakness_types = """
+# 1. A table that defines different weaknesses:
+create_weakness_types = """
    CREATE TABLE weakness_types (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         name VARCHAR(64)
@@ -46,30 +49,30 @@ VALUES
     """
 run_this(create_weakness_types)
 
-# A table that displays which heroes have which weaknesses:
+# 2. A table that displays which heroes have which weaknesses:
 create_weaknesses = """
 CREATE TABLE weaknesses (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     hero_id INTEGER NOT NULL,
-    FOREIGN KEY (hero_id) REFERENCES heroes (id) ON DELETE CASCADE,
+    FOREIGN KEY (hero_id) REFERENCES test_heroes (id) ON DELETE CASCADE,
     weakness_type_id INTEGER NOT NULL,
-    FOREIGN KEY (weakness_type_id) REFERENCES ability_types (id) ON DELETE CASCADE
+    FOREIGN KEY (weakness_type_id) REFERENCES test_ability_types (id) ON DELETE CASCADE
 );
 
 INSERT INTO
     weaknesses (hero_id, weakness_type_id)
 VALUES
-    (1, 5);
+    (1, 1);
 
 INSERT INTO
     weaknesses (hero_id, weakness_type_id)
 VALUES
-    (2, 3);
+    (2, 2);
 
 INSERT INTO
     weaknesses (hero_id, weakness_type_id)
 VALUES
-    (2, 4);
+    (3, 3);
 
 INSERT INTO
     weaknesses (hero_id, weakness_type_id)
@@ -79,22 +82,18 @@ VALUES
 INSERT INTO
     weaknesses (hero_id, weakness_type_id)
 VALUES
-    (4, 2);
+    (4, 4);
 
 INSERT INTO
     weaknesses (hero_id, weakness_type_id)
 VALUES
-    (4, 6);
+    (5, 5);
 
 INSERT INTO
     weaknesses (hero_id, weakness_type_id)
 VALUES
-    (5, 7);
+    (6, 6);
 
-INSERT INTO
-    weaknesses (hero_id, weakness_type_id)
-VALUES
-    (6, 7);
     """
 
 run_this(create_weaknesses)

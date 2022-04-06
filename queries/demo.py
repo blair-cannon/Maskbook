@@ -1,4 +1,5 @@
-# This is why you'll execute a series of SQL statements during demo day.
+import sys
+sys.path.append("/workspace/Maskbook")
 from connection import select_one, select_all, run_this
 
 # select_heroes = """
