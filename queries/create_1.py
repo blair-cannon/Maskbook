@@ -6,6 +6,7 @@ from connection import select_one, select_all, run_this
 # create new tables:
 
 
+# Heroes are encouraged to be vulnerable on MaskBook and share about their weaknesses. 
 # 1. A table that defines different weaknesses:
 create_weakness_types = """
    CREATE TABLE weakness_types (

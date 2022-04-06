@@ -36,6 +36,7 @@ print(double_weaknesses)
 # otherwise, if a hero only appears in the double_weaknesses list
 # then it automatically has more weaknesses than abilities 
 # and no comparison is needed
+result = 0
 for strong_hero in double_abilities:
     for weak_hero in double_weaknesses:
         if weak_hero[0] == strong_hero[0]:
@@ -45,11 +46,16 @@ for strong_hero in double_abilities:
                     print('There are no heroes with more weaknesses than abilities.')
         else:
             result = weak_hero[0]
-            print(result)
+            # print(result)
+
+
 # 4. Convert hero_id to hero_name 
-            name = """ 
-                SELECT name FROM test_heroes 
-                WHERE id = {}
-            """.format(result)
-            print(run_this(name))
+
+print(result)
+find_name = """ 
+    SELECT name FROM test_heroes 
+    WHERE id={}
+    """.format(result)
+name = select_one(find_name)
+print(''.join(name)) # This hero has more weaknesses than abilities. 
 
