@@ -4,6 +4,11 @@ from connection import select_one, select_all, run_this
 
 # interactive terminal
 
+# to do:
+# add more options in the beginning 
+# errors
+# take user back to certain spots if error
+
 def find_info(INPUT_NAME, INFO_NEEDED):
     sql = """ 
     SELECT {} FROM heroes
@@ -119,5 +124,5 @@ if GOAL.lower() == "find hero":
         print("Sorry, you are out of options.")
         # bring them back to the beginning ??
 elif GOAL.lower() == "make new profile":
-    
+
         
