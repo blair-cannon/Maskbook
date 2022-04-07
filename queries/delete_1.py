@@ -23,6 +23,14 @@ DELETE FROM test_relationships
 WHERE hero1_id = 2 AND hero2_id = 1
 """
 
-run_this(delete_a_relationship)
+# run_this(delete_a_relationship)
 
 
+# 3. Delete a profile. He is going undercover and needs to delete all of his social media accounts. 
+
+delete_a_profile = """ 
+DELETE FROM heroes
+WHERE name = 'Chad Powell'
+"""
+
+# run_this(delete_a_profile)
