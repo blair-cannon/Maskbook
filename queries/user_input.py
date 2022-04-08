@@ -66,7 +66,6 @@ def find_relationships(INPUT_NAME, INFO_NEEDED):
         WHERE (h1.name = '{}' OR h2.name = '{}') AND relationship_types.name = '{}'
         """.format(INPUT_NAME, INPUT_NAME, INFO_NEEDED)
         friends_tuple = select_all(sql)
-        # print(friends_tuple)
         friends = []
         for friendship in friends_tuple:
             if friendship[0] == INPUT_NAME:
@@ -86,7 +85,7 @@ def show_all():
         SELECT name FROM heroes
         """
         heroes_tuple = select_all(sql)
-        print(heroes_tuple)
+        print(str(heroes_tuple).strip('[]'))
         # can't get this to turn into a string for the life of me
     except:
         print("There seems to be a problem. Let's try that again.")
