@@ -2,7 +2,6 @@ import sys
 sys.path.append("/workspace/Maskbook")
 from connection import select_one, select_all, run_this
 
-# all of these are made in relation to the test tables to not disturb the real environment until production
 # create new tables:
 
 
@@ -55,9 +54,9 @@ create_weaknesses = """
 CREATE TABLE weaknesses (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     hero_id INTEGER NOT NULL,
-    FOREIGN KEY (hero_id) REFERENCES test_heroes (id) ON DELETE CASCADE,
+    FOREIGN KEY (hero_id) REFERENCES heroes (id) ON DELETE CASCADE,
     weakness_type_id INTEGER NOT NULL,
-    FOREIGN KEY (weakness_type_id) REFERENCES test_ability_types (id) ON DELETE CASCADE
+    FOREIGN KEY (weakness_type_id) REFERENCES ability_types (id) ON DELETE CASCADE
 );
 
 INSERT INTO

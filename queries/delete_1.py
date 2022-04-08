@@ -2,7 +2,6 @@ import sys
 sys.path.append("/workspace/Maskbook")
 from connection import select_one, select_all, run_this
 
-# all of these are made in relation to the test tables to not disturb the real environment until production
 # DELETE data:
 
 # 1. A treatment came out that cured Mental Mary's narcolepsy so we can delete it as a weakness
@@ -19,7 +18,7 @@ DELETE FROM weakness_types WHERE name = 'Narcolepsy'
 # on Maskbook for everyone to see, so they unfriend each other.
 
 delete_a_relationship = """ 
-DELETE FROM test_relationships 
+DELETE FROM relationships 
 WHERE hero1_id = 2 AND hero2_id = 1
 """
 
@@ -30,7 +29,7 @@ WHERE hero1_id = 2 AND hero2_id = 1
 
 delete_a_profile = """ 
 DELETE FROM heroes
-WHERE name = 'Chad Powell'
+WHERE name = 'blair'
 """
 
-# run_this(delete_a_profile)
+run_this(delete_a_profile)

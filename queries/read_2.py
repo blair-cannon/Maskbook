@@ -1,6 +1,6 @@
-# SELECT abilities.hero_id, abilities.ability_type_id, ability_types.name
-# FROM abilities
-# INNER JOIN ability_types ON abilities.ability_type_id=ability_types.id
+# READ part 2: some nifty table joins that can be viewed if copied into pgADMIN
+
+# shows heroes and their abilities:
 
 # SELECT  heroes.name AS heroes, STRING_AGG(ability_types.name, ', ') AS Ability
 # FROM heroes
@@ -10,6 +10,7 @@
 # ON abilities.ability_type_id = ability_types.id
 # GROUP BY heroes.name
 
+# shows heroes and their relationships:
 
 # SELECT h1.name AS hero1, h2.name AS hero2, relationship_types.name AS Relationship
 # FROM relationships 

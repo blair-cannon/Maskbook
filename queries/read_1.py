@@ -2,7 +2,6 @@ import sys
 sys.path.append("/workspace/Maskbook")
 from connection import select_one, select_all, run_this
 
-# all of these are made in relation to the test tables to not disturb the real environment until production
 # READ data:
 
 # GOAL: Select any heroes (if any) that have more disabilities than abilities (can view with angry cat)
@@ -10,7 +9,7 @@ from connection import select_one, select_all, run_this
 # 1. select any heroes that have more than one ability
 find_heros_with_more_than_one_ability = """ 
 SELECT hero_id, COUNT(hero_id)
-FROM test_abilities
+FROM abilities
 GROUP BY hero_id
 HAVING COUNT(hero_id)>1
 """
@@ -53,7 +52,7 @@ for strong_hero in double_abilities:
 
 print(result)
 find_name = """ 
-    SELECT name FROM test_heroes 
+    SELECT name FROM heroes 
     WHERE id={}
     """.format(result)
 name = select_one(find_name)

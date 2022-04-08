@@ -2,13 +2,7 @@ import sys
 sys.path.append("/workspace/Maskbook")
 from connection import select_one, select_all, run_this
 
-# interactive terminal
-
-# TO DO:
-# add more options in the beginning 
-# fix up some join's for READ 
-# any stretches?
-# move methods to new files
+# interactive terminal code
 
 def find_info(INPUT_NAME, INFO_NEEDED):
     try:
@@ -99,26 +93,52 @@ def show_all():
         init()
     
 def new_hero(new_name, new_about, new_bio):
-    sql = """ 
-    INSERT INTO heroes(name, about_me, biography)
-    VALUES ('{}','{}','{}')
-    """.format(new_name, new_about, new_bio)
-    run_this(sql)
-    
+    try:
+        sql = """ 
+        INSERT INTO heroes(name, about_me, biography)
+        VALUES ('{}','{}','{}')
+        """.format(new_name, new_about, new_bio)
+        run_this(sql)
+    except:
+            print("There seems to be a problem. Let's try that again.")
+            init()
 
+def add_relationship(user_name, new_relationship_id, user_friend):
+    try:
+        sql1 = """ 
+        SELECT id FROM heroes 
+        WHERE name = '{}'
+        """.format(user_name)
+        user_id_tuple = select_one(sql1)
+        user_id = user_id_tuple[0]
 
+        sql2 = """ 
+        SELECT id FROM heroes 
+        WHERE name = '{}'
+        """.format(user_friend)
+        other_id_tuple = select_one(sql2)
+        other_id = other_id_tuple[0]
+        
+        sql = """ 
+        INSERT INTO relationships(hero1_id, hero2_id, relationship_type_id)
+        VALUES ('{}','{}','{}')
+        """.format(user_id, other_id, new_relationship_id)
+        run_this(sql)
+    except:
+        print("There seems to be a problem. Let's try that again.")
+        init()
 
 def init():   
 
-    print("Welcome to MaskBook. A place where all supernaturals are welcomed and encouraged to unMask and let loose.")
+    print("Welcome to MaskBook. \n A place where all supernaturals are welcomed and encouraged to unMask and let loose.")
 
-    GOAL = input("What can we help you with? Answer with FIND HERO or MAKE NEW PROFILE:")
+    GOAL = input("What can we help you with? \n Choose from the following: \n FIND HERO \n MAKE NEW PROFILE \n ADD NEW RELATIONSHIP \n ")
 
     if GOAL.lower() == "find hero": 
         FILTER_BY = input("Would you like to search by name?")
         if FILTER_BY.lower() == 'yes':
             INPUT_NAME = input("Enter the name of the hero you are looking for:")
-            INFO_NEEDED = input("What info would you like to search? Choose from the following: About Me Statement, Biography, Abilities, Weaknesses, Friends, Enemies:")
+            INFO_NEEDED = input("What info would you like to search? \n Choose from the following: \n About Me Statement \n Biography \n Abilities \n Weaknesses \n Friends \n Enemies \n")
         
             if INFO_NEEDED.lower() == 'about me statement':
                 INFO_NEEDED = 'about_me'
@@ -151,9 +171,22 @@ def init():
             print("Sorry, we don't have that option. Try again.")
             init()
     elif GOAL.lower() == "make new profile":
+        print("Perfect. Let's make a new profile!")
         new_name = input("What is your name?")
         new_about = input("What is your catch line? A simple sentence will do.")
         new_bio = input("Tell us a little more about yourself using 2-3 sentences.")
         new_hero(new_name, new_about, new_bio)
+
+
+    elif GOAL.lower() == 'add new relationship':
+        print("Perfect! Let's update your relationships.")
+        user_name = input("What is your name?")
+        user_relationship = input("Would you like to add a friend or enemy?")
+        if user_relationship.lower() == 'friend':
+            new_relationship_id = 1
+        elif user_relationship.lower() == 'enemy':
+            new_relationship_id = 2
+        user_friend = input("What is their name?")
+        add_relationship(user_name, new_relationship_id, user_friend)
         
 init()
