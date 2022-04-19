@@ -1,13 +1,24 @@
-### Project Setup
 
-1. Use this repo as a template for any python/database based projects.
-1. Start up the project by creating a new Gitpod workspace. During that process the repo will automatically use docker to set up all the dependencies and set up a database for you with pgadmin enabled. Additionally all of the python modules should be installed as well. 
-1. Credentials for the pgadmin/database are in the docker-compose file.
-1. Default database information is in the pgadmin_import.json file.
-1. Execute/run the connection.py file and if the connection prints "Connection to PostgreSQL DB successful" you're good to go.
+## Name
 
-### pgAdmin 4
-Documentation, albeit pretty rough to look at, can be found for this [here](https://www.pgadmin.org/docs/pgadmin4/latest/user_interface.html)
+MaskBook
 
-### PostgresQL
-The [https://www.postgresqltutorial.com/](https://www.postgresqltutorial.com/) tutorial and documentation is a very helpful resource to have throughout the project.
+
+## Description
+
+o	A website API backend for Facebook for Superheroes
+o	Interactive creation of a hero in the terminal via Python script
+o	Full CRUD (create, read, update, delete) functionality within the database
+o	Uses Psycopg 3 to implement SQL statements within Python
+
+
+## Tech Stack
+Python 3 <br />
+PostgreSQL <br />
+Psycopg 3 <br />
+SQL
+
+
+## Requirements
+- Create a Connection to a gitpod Database using Python 3 and view the database 
+- Manage data within tables that are logically sound and organized to handle a large database
